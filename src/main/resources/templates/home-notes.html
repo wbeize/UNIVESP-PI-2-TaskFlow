@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home Notes</title>
+</head>
+<body>
+<h1>Home Notes</h1>
+<div>
+  <progress id="progressBar" value="0" max="100"></progress>
+</div>
+<script>
+  let progressBar = document.getElementById("progressBar");
+  let value = 0;
+  let interval = setInterval(() => {
+    if (value >= 70) {
+      clearInterval(interval);
+    } else {
+      value += 1;
+      progressBar.value = value;
+    }
+  }, 50);
+</script>
+</body>
+</html>

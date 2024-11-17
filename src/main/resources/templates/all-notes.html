@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Notes</title>
+</head>
+<body>
+<h1>All Notes</h1>
+<div th:if="${notes.isEmpty()}">
+    <p>No notes found</p>
+</div>
+<table th:if="${!notes.isEmpty()}">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note : ${notes}">
+        <td th:text="${note.title}"></td>
+        <td th:text="${note.description}"></td>
+        <td th:text="${note.priority}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

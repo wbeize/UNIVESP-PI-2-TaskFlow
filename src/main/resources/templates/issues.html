@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Issues</title>
+</head>
+<body>
+<h1>Issue List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="issue : ${issues}">
+        <td th:text="${issue.id}"></td>
+        <td th:text="${issue.name}"></td>
+        <td th:text="${issue.description}"></td>
+        <td th:text="${getType(issue.issuePriority.priority)}"></td>
+        <td>
+        <span th:style="'background-color:' + ${getColor(issue.issuePriority.priority)}">
+            Priority
+        </span>
+        </td>
+    </tr>
+
+    <script>
+        function getType(priority) {
+            switch(priority) {
+                case 0: return "Work";
+                case 1: return "Personal";
+                case 2: return "Health";
+                default: return "Work";
+            }
+        }
+
+        function getColor(priority) {
+            switch(priority) {
+                case 1: return "turquoise_green";
+                case 2: return "light_beige";
+                case 3: return "sunset";
+                default: return "warm_blue";
+            }
+        }
+    </script>
+
+    </tbody>
+</table>
+</body>
+</html>
